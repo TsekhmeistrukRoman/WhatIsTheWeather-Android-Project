@@ -15,6 +15,11 @@ import tsekhmeistruk.whatistheweather.R;
 
 public class WeatherPreviewFragment extends Fragment {
 
+    public static WeatherPreviewFragment newInstance() {
+        WeatherPreviewFragment fragment = new WeatherPreviewFragment();
+        return fragment;
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
