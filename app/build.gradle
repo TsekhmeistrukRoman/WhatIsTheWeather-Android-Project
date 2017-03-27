@@ -45,4 +45,9 @@ dependencies {
     // dagger
     compile 'com.google.dagger:dagger:2.0.2'
     apt "com.google.dagger:dagger-compiler:2.0.2"
+
+    // rx
+    compile 'io.reactivex:rxandroid:1.2.1'
+    compile 'io.reactivex:rxjava:1.1.6'
+    compile 'com.jakewharton.rxbinding:rxbinding:0.4.0'
 }
