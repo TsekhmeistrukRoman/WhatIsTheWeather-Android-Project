@@ -5,4 +5,8 @@ package tsekhmeistruk.whatistheweather;
  */
 
 public class Constants {
+
+    private static final String GOOGLE_MAP_SERVER = "https://maps.googleapis.com/maps";
+    public static final String GOOGLE_MAP_API = GOOGLE_MAP_SERVER + "/api/";
+
 }
