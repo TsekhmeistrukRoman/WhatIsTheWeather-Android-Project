@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">What Is The Weather</string>
+    <string name="request_execution_has_failed">Request execution has failed</string>
 </resources>
