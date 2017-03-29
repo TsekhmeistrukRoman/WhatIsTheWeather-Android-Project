@@ -68,6 +68,7 @@
         </LinearLayout>
 
         <ImageView
+            android:layout_marginRight="10dp"
             android:id="@+id/weather_icon_image_view"
             android:layout_width="60dp"
             android:layout_height="60dp"
