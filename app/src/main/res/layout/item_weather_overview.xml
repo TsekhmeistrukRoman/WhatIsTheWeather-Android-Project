@@ -16,7 +16,7 @@
             android:id="@+id/date_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="17.07.1998"
+            android:text="Mon, 17.07"
             android:textColor="@color/colorGray"
             android:textSize="@dimen/description_text_size" />
 
@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:text="Sunny"
+            android:text="Mostly sunny"
             android:textColor="@color/colorGray"
             android:textSize="@dimen/description_text_size" />
     </LinearLayout>
