@@ -5,4 +5,5 @@
     <string name="mp_h">mp/h</string>
     <string name="percent">%</string>
     <string name="comma_divider">,</string>
+    <string name="current_city">Current city:</string>
 </resources>
