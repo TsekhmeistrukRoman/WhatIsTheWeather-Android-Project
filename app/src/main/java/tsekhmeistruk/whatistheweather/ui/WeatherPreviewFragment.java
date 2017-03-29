@@ -18,9 +18,6 @@ import tsekhmeistruk.whatistheweather.R;
 
 public class WeatherPreviewFragment extends Fragment {
 
-    @BindView(R.id.city_picture)
-    ImageView cityPicture;
-
     public static WeatherPreviewFragment newInstance() {
         WeatherPreviewFragment fragment = new WeatherPreviewFragment();
         return fragment;
@@ -35,7 +32,6 @@ public class WeatherPreviewFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_weather_preview, container, false);
-        ButterKnife.bind(this, view);
 
         return view;
     }
