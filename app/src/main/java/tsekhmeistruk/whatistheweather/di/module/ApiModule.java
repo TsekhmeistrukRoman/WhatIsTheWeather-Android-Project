@@ -12,6 +12,7 @@ import java.util.Date;
 
 import javax.inject.Singleton;
 
+import dagger.Module;
 import dagger.Provides;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
@@ -22,6 +23,7 @@ import tsekhmeistruk.whatistheweather.Constants;
  * Created by Roman Tsekhmeistruk on 28.03.2017.
  */
 
+@Module
 public class ApiModule {
 
     @Provides
