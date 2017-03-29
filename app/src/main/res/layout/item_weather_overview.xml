@@ -9,38 +9,50 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:orientation="horizontal">
+
+        <tsekhmeistruk.whatistheweather.widgets.views.FontTextView
+            android:id="@+id/day_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Fri"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/date_text_size" />
+
+        <tsekhmeistruk.whatistheweather.widgets.views.FontTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/comma_divider"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/date_text_size" />
 
         <tsekhmeistruk.whatistheweather.widgets.views.FontTextView
             android:id="@+id/date_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Mon, 17.07"
-            android:textColor="@color/colorGray"
-            android:textSize="@dimen/description_text_size" />
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="10dp"
+            android:text="17.07"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/date_text_size" />
 
-        <tsekhmeistruk.whatistheweather.widgets.views.FontTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=","
-            android:textColor="@color/colorGray"
-            android:textSize="@dimen/description_text_size" />
-
-        <tsekhmeistruk.whatistheweather.widgets.views.FontTextView
-            android:id="@+id/short_weather_description_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:text="Mostly sunny"
-            android:textColor="@color/colorGray"
-            android:textSize="@dimen/description_text_size" />
     </LinearLayout>
+
+    <tsekhmeistruk.whatistheweather.widgets.views.FontTextView
+        android:id="@+id/short_weather_description_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:text="Mostly sunny"
+        android:textColor="@color/colorGray"
+        android:textSize="@dimen/description_text_size" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -68,11 +80,11 @@
         </LinearLayout>
 
         <ImageView
-            android:layout_marginRight="10dp"
             android:id="@+id/weather_icon_image_view"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
             android:layout_gravity="end|center_vertical"
+            android:layout_marginRight="10dp"
             android:adjustViewBounds="true"
             android:src="@drawable/weather_icon" />
 
@@ -81,7 +93,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp">
+        android:layout_marginTop="25dp">
 
         <ImageView
             android:layout_width="30dp"
@@ -114,9 +126,9 @@
         android:layout_marginTop="15dp">
 
         <LinearLayout
-            android:layout_weight="1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
 
             <ImageView
                 android:layout_width="30dp"
@@ -144,9 +156,9 @@
         </LinearLayout>
 
         <ImageView
-            android:src="@drawable/arrow"
             android:layout_width="30dp"
-            android:layout_height="30dp" />
+            android:layout_height="30dp"
+            android:src="@drawable/arrow" />
 
     </LinearLayout>
 

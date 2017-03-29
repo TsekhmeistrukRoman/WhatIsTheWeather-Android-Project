@@ -4,4 +4,5 @@
     <string name="celsius">°C</string>
     <string name="mp_h">mp/h</string>
     <string name="percent">%</string>
+    <string name="comma_divider">,</string>
 </resources>
