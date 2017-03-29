@@ -34,7 +34,7 @@ public class WeatherPreviewFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.weather_preview_fragment, container, false);
+        View view = inflater.inflate(R.layout.fragment_weather_preview, container, false);
         ButterKnife.bind(this, view);
 
         return view;
