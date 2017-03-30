@@ -86,7 +86,7 @@
             android:layout_gravity="end|center_vertical"
             android:layout_marginRight="10dp"
             android:adjustViewBounds="true"
-            android:src="@drawable/weather_icon" />
+            android:src="@drawable/d10" />
 
     </LinearLayout>
 
