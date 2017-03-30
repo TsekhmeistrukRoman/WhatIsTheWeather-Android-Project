@@ -11,5 +11,10 @@
 
     <!-- Fonts -->
     <string name="font_montserrat_regular">Montserrat-Regular.ttf</string>
+    <string name="weather_in_my_city">Weather in my city</string>
+    <string name="find_city">Find city</string>
+    <string name="weather">Weather</string>
+    <string name="feedback">Feedback</string>
+    <string name="rate_application">Rate application</string>
 
 </resources>
