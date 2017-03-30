@@ -1,4 +1,6 @@
 <resources>
+
+    <!-- Strings -->
     <string name="app_name">What Is The Weather</string>
     <string name="request_execution_has_failed">Request execution has failed</string>
     <string name="celsius">°C</string>
@@ -6,4 +8,8 @@
     <string name="percent">%</string>
     <string name="comma_divider">,</string>
     <string name="current_city">Current city:</string>
+
+    <!-- Fonts -->
+    <string name="font_montserrat_regular">Montserrat-Regular.ttf</string>
+
 </resources>
