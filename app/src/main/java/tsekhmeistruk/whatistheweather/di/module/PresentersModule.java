@@ -16,7 +16,7 @@ public class PresentersModule {
 
     @Provides
     @Scope(Scopes.VIEW)
-    public WeatherForecastPresenter provideAudioPlayerPresenter(IWeatherForecastDataSource weatherForecastDataSource) {
+    public WeatherForecastPresenter provideWeatherForecastPresenter(IWeatherForecastDataSource weatherForecastDataSource) {
         return new WeatherForecastPresenter(weatherForecastDataSource);
     }
 
