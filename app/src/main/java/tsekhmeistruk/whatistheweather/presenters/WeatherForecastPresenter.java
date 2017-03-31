@@ -3,8 +3,8 @@ package tsekhmeistruk.whatistheweather.presenters;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import tsekhmeistruk.whatistheweather.models.remote.IWeatherForecastDataSource;
-import tsekhmeistruk.whatistheweather.utils.RxErrorAction;
-import tsekhmeistruk.whatistheweather.utils.RxRetryWithDelay;
+import tsekhmeistruk.whatistheweather.utils.rx.RxErrorAction;
+import tsekhmeistruk.whatistheweather.utils.rx.RxRetryWithDelay;
 import tsekhmeistruk.whatistheweather.views.WeatherForecastView;
 
 /**

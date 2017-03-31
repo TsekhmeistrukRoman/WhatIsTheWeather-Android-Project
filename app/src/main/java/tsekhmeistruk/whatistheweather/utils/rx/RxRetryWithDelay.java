@@ -1,4 +1,4 @@
-package tsekhmeistruk.whatistheweather.utils;
+package tsekhmeistruk.whatistheweather.utils.rx;
 
 import java.util.concurrent.TimeUnit;
 
