@@ -2,7 +2,6 @@ package tsekhmeistruk.whatistheweather.ui;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,7 @@ import tsekhmeistruk.whatistheweather.R;
  * Created by Roman Tsekhmeistruk on 27.03.2017.
  */
 
-public class WeatherPreviewFragment extends Fragment {
+public class WeatherPreviewFragment extends BaseFragment {
 
     public static WeatherPreviewFragment newInstance() {
         WeatherPreviewFragment fragment = new WeatherPreviewFragment();
