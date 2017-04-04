@@ -13,11 +13,49 @@
         android:paddingTop="@dimen/tool_bar_top_padding"
         android:transitionName="actionBar" />
 
+    <ImageView
+        android:id="@+id/background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:src="@drawable/main_background" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_above="@+id/weather_overviews_container"
+        android:src="@drawable/black_gradient" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/background"
+        android:layout_marginTop="-45dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="@string/weather_in"
+            android:textColor="@color/colorWhite"
+            android:textSize="25sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
+            android:text="Kiev"
+            android:textColor="@color/colorWhite"
+            android:textSize="25sp" />
+
+    </LinearLayout>
+
     <ListView
         android:id="@+id/weather_overviews_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/toolbar">
+        android:layout_below="@+id/background">
 
     </ListView>
 

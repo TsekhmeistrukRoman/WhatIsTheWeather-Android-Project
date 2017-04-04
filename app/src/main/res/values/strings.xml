@@ -16,5 +16,6 @@
     <string name="weather">Weather</string>
     <string name="feedback">Feedback</string>
     <string name="rate_application">Rate application</string>
+    <string name="weather_in">Weather in</string>
 
 </resources>
