@@ -36,6 +36,7 @@ public class BaseFragment extends Fragment {
         toolbar = (Toolbar) activity.findViewById(R.id.toolbar);
         activity.setSupportActionBar(toolbar);
         activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        activity.getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
     private void initializeNavigationDrawer() {
