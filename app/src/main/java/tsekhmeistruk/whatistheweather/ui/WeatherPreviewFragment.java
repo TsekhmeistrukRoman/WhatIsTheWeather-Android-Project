@@ -5,21 +5,21 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import java.util.List;
+import android.widget.ListView;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import tsekhmeistruk.whatistheweather.AppWhatIsTheWeather;
-import tsekhmeistruk.whatistheweather.Constants;
 import tsekhmeistruk.whatistheweather.R;
 import tsekhmeistruk.whatistheweather.di.component.AppComponent;
 import tsekhmeistruk.whatistheweather.di.component.DaggerPresentersComponent;
 import tsekhmeistruk.whatistheweather.di.module.PresentersModule;
-import tsekhmeistruk.whatistheweather.models.entities.MainWeatherInfo;
 import tsekhmeistruk.whatistheweather.models.entities.WeatherForecast;
 import tsekhmeistruk.whatistheweather.presenters.WeatherForecastPresenter;
 import tsekhmeistruk.whatistheweather.views.WeatherForecastView;
+import tsekhmeistruk.whatistheweather.widgets.adapters.WeatherListAdapter;
 
 /**
  * Created by Roman Tsekhmeistruk on 27.03.2017.
@@ -27,12 +27,14 @@ import tsekhmeistruk.whatistheweather.views.WeatherForecastView;
 
 public class WeatherPreviewFragment extends BaseFragment implements WeatherForecastView {
 
+    @BindView(R.id.weather_overviews_container)
+    ListView weatherOverviewList;
+
     @Inject
     WeatherForecastPresenter weatherForecastPresenter;
 
     public static WeatherPreviewFragment newInstance() {
-        WeatherPreviewFragment fragment = new WeatherPreviewFragment();
-        return fragment;
+        return new WeatherPreviewFragment();
     }
 
     @Override
@@ -52,8 +54,20 @@ public class WeatherPreviewFragment extends BaseFragment implements WeatherForec
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_weather_preview, container, false);
+        ButterKnife.bind(this, view);
 
         return view;
+    }
+
+    @Override
+    public void showWeatherForecast(WeatherForecast weatherForecast) {
+        WeatherListAdapter weatherListAdapter
+                = new WeatherListAdapter(weatherForecast.getMainWeatherInfoList());
+        weatherOverviewList.setAdapter(weatherListAdapter);
+    }
+
+    public AppComponent getAppComponent() {
+        return ((AppWhatIsTheWeather) getActivity().getApplication()).appComponent();
     }
 
 }
