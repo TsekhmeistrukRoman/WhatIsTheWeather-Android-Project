@@ -10,10 +10,6 @@ import tsekhmeistruk.whatistheweather.models.entities.WeatherForecast;
 public interface IWeatherForecastDataSource {
 
     Observable<WeatherForecast> getWeatherForecast(double latitude,
-                                                   double longitude,
-                                                   int daysNumber,
-                                                   String mode,
-                                                   String appId,
-                                                   String units);
+                                                   double longitude);
 
 }

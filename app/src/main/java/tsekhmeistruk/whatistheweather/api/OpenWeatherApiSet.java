@@ -3,6 +3,7 @@ package tsekhmeistruk.whatistheweather.api;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 import rx.Observable;
+import tsekhmeistruk.whatistheweather.Constants;
 import tsekhmeistruk.whatistheweather.models.entities.WeatherForecast;
 
 /**
@@ -11,12 +12,8 @@ import tsekhmeistruk.whatistheweather.models.entities.WeatherForecast;
 
 public interface OpenWeatherApiSet {
 
-    @GET("data/2.5/forecast/daily")
+    @GET("data/2.5/forecast/daily?cnt=14&mode=json&appid=" + Constants.OPEN_WEATHER_API_KEY + "&units=metric")
     Observable<WeatherForecast> getWeatherForecast(@Query("lat") double latitude,
-                                                   @Query("lon") double longitude,
-                                                   @Query("cnt") int daysNumber,
-                                                   @Query("mode") String mode,
-                                                   @Query("appid") String appId,
-                                                   @Query("units") String units);
+                                                   @Query("lon") double longitude);
 
 }

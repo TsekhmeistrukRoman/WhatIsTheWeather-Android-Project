@@ -20,16 +20,10 @@ public class WeatherForecastPresenter extends BasePresenter<WeatherForecastView>
     }
 
     public void loadWeatherForecast(double latitude,
-                                    double longitude,
-                                    int daysNumber,
-                                    String mode,
-                                    String appId,
-                                    String units) {
+                                    double longitude) {
         WeatherForecastView view = getView();
         subscribe(
-                weatherForecastDataSource.getWeatherForecast(latitude, longitude,
-                        daysNumber, mode,
-                        appId, units)
+                weatherForecastDataSource.getWeatherForecast(latitude, longitude)
                         .retryWhen(new RxRetryWithDelay())
                         .map(response -> response)
                         .subscribeOn(Schedulers.io())

@@ -18,14 +18,8 @@ public class WeatherForecastDataSource implements IWeatherForecastDataSource {
 
     @Override
     public Observable<WeatherForecast> getWeatherForecast(double latitude,
-                                                          double longitude,
-                                                          int daysNumber,
-                                                          String mode,
-                                                          String appId,
-                                                          String units) {
-        return openWeatherApiSet.getWeatherForecast(latitude, longitude,
-                daysNumber, mode,
-                appId, units);
+                                                          double longitude) {
+        return openWeatherApiSet.getWeatherForecast(latitude, longitude);
     }
 
 }
