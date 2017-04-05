@@ -39,7 +39,7 @@ public class WeatherForecast {
         return daysNumber;
     }
 
-    public List<MainWeatherInfo> getList() {
+    public List<MainWeatherInfo> getMainWeatherInfoList() {
         return mainWeatherInfoList;
     }
 
