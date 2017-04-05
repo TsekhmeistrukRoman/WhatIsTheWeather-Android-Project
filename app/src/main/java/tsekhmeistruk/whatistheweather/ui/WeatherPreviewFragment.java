@@ -6,13 +6,29 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.List;
+
+import javax.inject.Inject;
+
+import tsekhmeistruk.whatistheweather.AppWhatIsTheWeather;
+import tsekhmeistruk.whatistheweather.Constants;
 import tsekhmeistruk.whatistheweather.R;
+import tsekhmeistruk.whatistheweather.di.component.AppComponent;
+import tsekhmeistruk.whatistheweather.di.component.DaggerPresentersComponent;
+import tsekhmeistruk.whatistheweather.di.module.PresentersModule;
+import tsekhmeistruk.whatistheweather.models.entities.MainWeatherInfo;
+import tsekhmeistruk.whatistheweather.models.entities.WeatherForecast;
+import tsekhmeistruk.whatistheweather.presenters.WeatherForecastPresenter;
+import tsekhmeistruk.whatistheweather.views.WeatherForecastView;
 
 /**
  * Created by Roman Tsekhmeistruk on 27.03.2017.
  */
 
-public class WeatherPreviewFragment extends BaseFragment {
+public class WeatherPreviewFragment extends BaseFragment implements WeatherForecastView {
+
+    @Inject
+    WeatherForecastPresenter weatherForecastPresenter;
 
     public static WeatherPreviewFragment newInstance() {
         WeatherPreviewFragment fragment = new WeatherPreviewFragment();
@@ -22,6 +38,14 @@ public class WeatherPreviewFragment extends BaseFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        DaggerPresentersComponent.builder()
+                .appComponent(getAppComponent())
+                .presentersModule(new PresentersModule())
+                .build()
+                .inject(this);
+
+        weatherForecastPresenter.setView(this);
     }
 
     @Nullable
