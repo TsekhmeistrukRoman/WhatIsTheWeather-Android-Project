@@ -75,7 +75,7 @@
                 android:layout_marginTop="-25dp"
                 android:text="@string/celsius"
                 android:textColor="@color/colorGray"
-                android:textSize="40dp" />
+                android:textSize="30dp" />
 
         </LinearLayout>
 
@@ -96,8 +96,8 @@
         android:layout_marginTop="25dp">
 
         <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:adjustViewBounds="true"
             android:src="@drawable/wind" />
 
@@ -131,8 +131,8 @@
             android:layout_weight="1">
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:adjustViewBounds="true"
                 android:src="@drawable/humidity" />
 
