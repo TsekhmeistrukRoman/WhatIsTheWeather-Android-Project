@@ -19,14 +19,14 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/background_image_drawer"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="-150dp"
+        android:layout_marginTop="-120dp"
         android:shadowColor="#062b68"
         android:shadowDx="2"
         android:shadowDy="2"
         android:shadowRadius="2"
         android:text="@string/what_is_the_weather"
         android:textColor="@color/colorWhite"
-        android:textSize="35sp"
-        app:font="@string/font_boogaloo_regular" />
+        android:textSize="25sp"
+        app:font="@string/font_montserrat_regular" />
 
 </RelativeLayout>
