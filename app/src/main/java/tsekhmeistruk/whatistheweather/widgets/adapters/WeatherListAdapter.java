@@ -80,7 +80,7 @@ public class WeatherListAdapter extends BaseAdapter {
                 .centerCrop().fitCenter().into(icon);
 
         temperature.setText(String.valueOf(
-                weatherInfoList.get(position).getTemperature().getDayTemperature()));
+                weatherInfoList.get(position).getTemperature().getDayTemperature().intValue()));
 
         windSpeed.setText(String.valueOf(
                 weatherInfoList.get(position).getSpeed()));
