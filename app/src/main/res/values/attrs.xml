@@ -16,7 +16,7 @@ limitations under the License.
 -->
 <resources>
 
-    <declare-styleable name="FontTextView">
+    <declare-styleable name="Localized">
         <attr name="font" format="string"/>
     </declare-styleable>
 

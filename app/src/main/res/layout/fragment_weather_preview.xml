@@ -42,6 +42,7 @@
             android:textSize="25sp" />
 
         <TextView
+            android:id="@+id/current_city_name_fragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="7dp"
