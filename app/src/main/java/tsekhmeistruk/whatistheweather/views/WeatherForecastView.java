@@ -10,4 +10,6 @@ public interface WeatherForecastView extends BaseView {
 
     void showWeatherForecast(WeatherForecast weatherForecast);
 
+    void setCityName(String cityName);
+
 }

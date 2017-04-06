@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import javax.inject.Inject;
 
@@ -29,6 +30,8 @@ public class WeatherPreviewFragment extends BaseFragment implements WeatherForec
 
     @BindView(R.id.weather_overviews_container)
     ListView weatherOverviewList;
+    @BindView(R.id.current_city_name_fragment)
+    TextView cityNameFragmentTextView;
 
     @Inject
     WeatherForecastPresenter weatherForecastPresenter;
@@ -59,6 +62,10 @@ public class WeatherPreviewFragment extends BaseFragment implements WeatherForec
         return view;
     }
 
+    public AppComponent getAppComponent() {
+        return ((AppWhatIsTheWeather) getActivity().getApplication()).appComponent();
+    }
+
     @Override
     public void showWeatherForecast(WeatherForecast weatherForecast) {
         WeatherListAdapter weatherListAdapter
@@ -66,8 +73,9 @@ public class WeatherPreviewFragment extends BaseFragment implements WeatherForec
         weatherOverviewList.setAdapter(weatherListAdapter);
     }
 
-    public AppComponent getAppComponent() {
-        return ((AppWhatIsTheWeather) getActivity().getApplication()).appComponent();
+    @Override
+    public void setCityName(String cityName) {
+        cityNameFragmentTextView.setText(cityName);
     }
 
 }

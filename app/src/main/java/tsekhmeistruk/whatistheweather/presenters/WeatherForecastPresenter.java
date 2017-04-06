@@ -34,4 +34,8 @@ public class WeatherForecastPresenter extends BasePresenter<WeatherForecastView>
         );
     }
 
+    public void setSityName(String name) {
+        getView().setCityName(name);
+    }
+
 }
