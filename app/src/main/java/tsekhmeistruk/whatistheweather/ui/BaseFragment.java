@@ -20,7 +20,6 @@ import tsekhmeistruk.whatistheweather.R;
 
 public class BaseFragment extends Fragment {
 
-    private Drawer.Result drawer;
     private Toolbar toolbar;
 
     @Override
@@ -40,7 +39,7 @@ public class BaseFragment extends Fragment {
     }
 
     private void initializeNavigationDrawer() {
-        drawer = new Drawer()
+        new Drawer()
                 .withActivity(getActivity())
                 .withToolbar(toolbar)
                 .withActionBarDrawerToggle(true)
