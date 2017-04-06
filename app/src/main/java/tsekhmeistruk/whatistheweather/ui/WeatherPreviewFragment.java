@@ -62,10 +62,6 @@ public class WeatherPreviewFragment extends BaseFragment implements WeatherForec
         return view;
     }
 
-    public AppComponent getAppComponent() {
-        return ((AppWhatIsTheWeather) getActivity().getApplication()).appComponent();
-    }
-
     @Override
     public void showWeatherForecast(WeatherForecast weatherForecast) {
         WeatherListAdapter weatherListAdapter
@@ -76,6 +72,10 @@ public class WeatherPreviewFragment extends BaseFragment implements WeatherForec
     @Override
     public void setCityName(String cityName) {
         cityNameFragmentTextView.setText(cityName);
+    }
+
+    public AppComponent getAppComponent() {
+        return ((AppWhatIsTheWeather) getActivity().getApplication()).appComponent();
     }
 
 }

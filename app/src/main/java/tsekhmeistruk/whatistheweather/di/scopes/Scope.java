@@ -11,5 +11,7 @@ import java.lang.annotation.RetentionPolicy;
 @javax.inject.Scope
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Scope {
+
     String value() default "";
+
 }

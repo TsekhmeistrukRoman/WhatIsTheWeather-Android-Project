@@ -19,8 +19,9 @@ public class FontTextView extends TextView {
     public FontTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
 
-        if (!isInEditMode())
+        if (!isInEditMode()) {
             setTypeface(TypefaceCache.getTypeface(context, attrs));
+        }
     }
 
 }
