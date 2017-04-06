@@ -62,7 +62,7 @@ public class WeatherPreviewFragment extends BaseFragment implements WeatherForec
     @Override
     public void showWeatherForecast(WeatherForecast weatherForecast) {
         WeatherListAdapter weatherListAdapter
-                = new WeatherListAdapter(weatherForecast.getMainWeatherInfoList());
+                = new WeatherListAdapter(getContext(), weatherForecast.getMainWeatherInfoList());
         weatherOverviewList.setAdapter(weatherListAdapter);
     }
 
