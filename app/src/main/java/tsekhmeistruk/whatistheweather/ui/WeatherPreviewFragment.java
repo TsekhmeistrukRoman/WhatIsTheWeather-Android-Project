@@ -1,7 +1,12 @@
 package tsekhmeistruk.whatistheweather.ui;
 
 import android.Manifest;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.location.LocationManager;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -23,6 +28,7 @@ import tsekhmeistruk.whatistheweather.di.component.DaggerPresentersComponent;
 import tsekhmeistruk.whatistheweather.di.module.PresentersModule;
 import tsekhmeistruk.whatistheweather.models.entities.WeatherForecast;
 import tsekhmeistruk.whatistheweather.presenters.WeatherForecastPresenter;
+import tsekhmeistruk.whatistheweather.utils.InternetConnectivityUtil;
 import tsekhmeistruk.whatistheweather.views.WeatherForecastView;
 import tsekhmeistruk.whatistheweather.widgets.adapters.WeatherListAdapter;
 
@@ -43,6 +49,7 @@ public class WeatherPreviewFragment extends Fragment implements WeatherForecastV
     WeatherForecastPresenter weatherForecastPresenter;
 
     private LocationManager locationManager;
+    private NetworkChangeReceiver networkChangeReceiver = new NetworkChangeReceiver();
 
     public static WeatherPreviewFragment newInstance() {
         return new WeatherPreviewFragment();
@@ -61,6 +68,9 @@ public class WeatherPreviewFragment extends Fragment implements WeatherForecastV
         locationManager = (LocationManager) getActivity().getSystemService(LOCATION_SERVICE);
 
         weatherForecastPresenter.setView(this);
+
+        IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        getActivity().registerReceiver(networkChangeReceiver, intentFilter);
     }
 
     @Nullable
@@ -69,9 +79,17 @@ public class WeatherPreviewFragment extends Fragment implements WeatherForecastV
         View view = inflater.inflate(R.layout.fragment_weather_preview, container, false);
         ButterKnife.bind(this, view);
 
-        weatherForecastPresenter.getWeatherForecast(locationManager);
+        if (InternetConnectivityUtil.isConnected(getContext())) {
+            weatherForecastPresenter.getWeatherForecast(locationManager);
+        }
 
         return view;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        getActivity().unregisterReceiver(networkChangeReceiver);
     }
 
     @Override
@@ -94,6 +112,31 @@ public class WeatherPreviewFragment extends Fragment implements WeatherForecastV
 
     public AppComponent getAppComponent() {
         return ((AppWhatIsTheWeather) getActivity().getApplication()).appComponent();
+    }
+
+    private class NetworkChangeReceiver extends BroadcastReceiver {
+
+        public NetworkChangeReceiver() {
+        }
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (!isInitialStickyBroadcast()) {
+                final ConnectivityManager connectivityManager = (ConnectivityManager) context
+                        .getSystemService(Context.CONNECTIVITY_SERVICE);
+
+                final android.net.NetworkInfo wifi = connectivityManager
+                        .getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+
+                final android.net.NetworkInfo mobile = connectivityManager
+                        .getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+
+                if (wifi.isConnected() || mobile.isConnected()) {
+                    weatherForecastPresenter.getWeatherForecast(locationManager);
+                }
+            }
+        }
+
     }
 
 }
