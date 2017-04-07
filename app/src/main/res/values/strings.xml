@@ -17,6 +17,8 @@
     <string name="what_is_the_weather">What Is The Weather</string>
     <string name="unknown_city">Unknown City</string>
     <string name="your_city">your city</string>
+    <string name="internet_is_needed">Internet connection is needed</string>
+    <string name="gps_is_needed">GPS is needed</string>
 
     <!-- Fonts -->
     <string name="font_montserrat_regular">Montserrat-Regular.ttf</string>

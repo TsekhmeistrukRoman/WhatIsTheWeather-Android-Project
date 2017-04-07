@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import javax.inject.Inject;
 
@@ -29,6 +30,7 @@ import tsekhmeistruk.whatistheweather.di.module.PresentersModule;
 import tsekhmeistruk.whatistheweather.models.entities.WeatherForecast;
 import tsekhmeistruk.whatistheweather.presenters.WeatherForecastPresenter;
 import tsekhmeistruk.whatistheweather.utils.InternetConnectivityUtil;
+import tsekhmeistruk.whatistheweather.utils.LocationUtil;
 import tsekhmeistruk.whatistheweather.views.WeatherForecastView;
 import tsekhmeistruk.whatistheweather.widgets.adapters.WeatherListAdapter;
 
@@ -81,6 +83,12 @@ public class WeatherPreviewFragment extends Fragment implements WeatherForecastV
 
         if (InternetConnectivityUtil.isConnected(getContext())) {
             weatherForecastPresenter.getWeatherForecast(locationManager);
+        } else {
+            showToast(getString(R.string.internet_is_needed));
+        }
+
+        if (!(LocationUtil.isEnabled(getContext()))) {
+            showToast(getString(R.string.gps_is_needed));
         }
 
         return view;
@@ -112,6 +120,10 @@ public class WeatherPreviewFragment extends Fragment implements WeatherForecastV
 
     public AppComponent getAppComponent() {
         return ((AppWhatIsTheWeather) getActivity().getApplication()).appComponent();
+    }
+
+    private void showToast(String toastText) {
+        Toast.makeText(getActivity(), toastText, Toast.LENGTH_LONG).show();
     }
 
     private class NetworkChangeReceiver extends BroadcastReceiver {
