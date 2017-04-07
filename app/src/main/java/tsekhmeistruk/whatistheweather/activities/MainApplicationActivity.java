@@ -14,17 +14,22 @@ import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import tsekhmeistruk.whatistheweather.R;
 import tsekhmeistruk.whatistheweather.ui.WeatherPreviewFragment;
 
 public class MainApplicationActivity extends ActionBarActivity {
 
-    private Toolbar toolbar;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather_forecast);
+
+        ButterKnife.bind(MainApplicationActivity.this);
 
         initializeToolbar();
         initializeNavigationDrawer();
@@ -42,7 +47,6 @@ public class MainApplicationActivity extends ActionBarActivity {
     }
 
     private void initializeToolbar() {
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
