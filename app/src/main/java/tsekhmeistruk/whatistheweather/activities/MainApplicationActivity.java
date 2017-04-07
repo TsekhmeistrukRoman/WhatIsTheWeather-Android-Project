@@ -19,6 +19,10 @@ import butterknife.ButterKnife;
 import tsekhmeistruk.whatistheweather.R;
 import tsekhmeistruk.whatistheweather.ui.WeatherPreviewFragment;
 
+/**
+ * Created by Roman Tsekhmeistruk on 27.03.2017.
+ */
+
 public class MainApplicationActivity extends ActionBarActivity {
 
     @BindView(R.id.toolbar)
