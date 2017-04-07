@@ -1,7 +1,10 @@
 package tsekhmeistruk.whatistheweather.ui;
 
+import android.Manifest;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +25,8 @@ import tsekhmeistruk.whatistheweather.presenters.WeatherForecastPresenter;
 import tsekhmeistruk.whatistheweather.views.WeatherForecastView;
 import tsekhmeistruk.whatistheweather.widgets.adapters.WeatherListAdapter;
 
+import static android.content.Context.LOCATION_SERVICE;
+
 /**
  * Created by Roman Tsekhmeistruk on 27.03.2017.
  */
@@ -35,6 +40,8 @@ public class WeatherPreviewFragment extends BaseFragment implements WeatherForec
 
     @Inject
     WeatherForecastPresenter weatherForecastPresenter;
+
+    private LocationManager locationManager;
 
     public static WeatherPreviewFragment newInstance() {
         return new WeatherPreviewFragment();
@@ -50,6 +57,8 @@ public class WeatherPreviewFragment extends BaseFragment implements WeatherForec
                 .build()
                 .inject(this);
 
+        locationManager = (LocationManager) getActivity().getSystemService(LOCATION_SERVICE);
+
         weatherForecastPresenter.setView(this);
     }
 
@@ -58,6 +67,8 @@ public class WeatherPreviewFragment extends BaseFragment implements WeatherForec
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_weather_preview, container, false);
         ButterKnife.bind(this, view);
+
+        weatherForecastPresenter.getWeatherForecast(locationManager);
 
         return view;
     }
@@ -72,6 +83,12 @@ public class WeatherPreviewFragment extends BaseFragment implements WeatherForec
     @Override
     public void setCityName(String cityName) {
         cityNameFragmentTextView.setText(cityName);
+    }
+
+    @Override
+    public void askLocationPermissions() {
+        ActivityCompat.requestPermissions(getActivity(),
+                new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
     }
 
     public AppComponent getAppComponent() {

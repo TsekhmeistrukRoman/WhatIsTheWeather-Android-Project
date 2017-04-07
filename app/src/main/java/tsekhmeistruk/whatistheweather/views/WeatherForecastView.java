@@ -12,4 +12,6 @@ public interface WeatherForecastView extends BaseView {
 
     void setCityName(String cityName);
 
+    void askLocationPermissions();
+
 }

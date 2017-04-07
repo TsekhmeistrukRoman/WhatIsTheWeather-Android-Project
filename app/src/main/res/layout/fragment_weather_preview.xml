@@ -46,7 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="7dp"
-            android:text="Kiev"
+            android:text="@string/your_city"
             android:textColor="@color/colorWhite"
             android:textSize="25sp" />
 
