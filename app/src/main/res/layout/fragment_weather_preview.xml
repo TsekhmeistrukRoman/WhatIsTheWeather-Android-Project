@@ -17,6 +17,7 @@
         android:src="@drawable/black_gradient" />
 
     <LinearLayout
+        android:id="@+id/weather_in_city"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/background"
@@ -50,5 +51,42 @@
         android:dividerHeight="5.0sp">
 
     </ListView>
+
+    <LinearLayout
+        android:id="@+id/loading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/background"
+        android:layout_marginTop="-45dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="@string/loading"
+            android:textColor="@color/colorWhite"
+            android:textSize="25sp" />
+
+        <ProgressBar
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="7dp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/internet_and_gps_is_needed_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/background"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="-45dp"
+        android:text="@string/internet_and_gps_are_needed"
+        android:textColor="@color/colorWhite"
+        android:textSize="25sp" />
 
 </RelativeLayout>

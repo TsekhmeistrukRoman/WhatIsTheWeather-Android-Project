@@ -10,14 +10,15 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
+import tsekhmeistruk.whatistheweather.Constants;
 import tsekhmeistruk.whatistheweather.R;
 import tsekhmeistruk.whatistheweather.models.remote.IWeatherForecastDataSource;
+import tsekhmeistruk.whatistheweather.utils.InternetConnectivityUtil;
 import tsekhmeistruk.whatistheweather.utils.rx.RxErrorAction;
 import tsekhmeistruk.whatistheweather.utils.rx.RxRetryWithDelay;
 import tsekhmeistruk.whatistheweather.views.WeatherForecastView;
@@ -88,12 +89,19 @@ public class WeatherForecastPresenter extends BasePresenter<WeatherForecastView>
 
         @Override
         public void onProviderEnabled(String provider) {
-
+            if (provider.equals(LocationManager.GPS_PROVIDER)) {
+                if (InternetConnectivityUtil.isConnected(getView().getContext())) {
+                    getView().setLoadingLayoutVisibility(Constants.VISIBLE);
+                    getView().setConnectionIsNeededLayoutVisibility(Constants.INVISIBLE);
+                }
+            }
         }
 
         @Override
         public void onProviderDisabled(String provider) {
-
+            getView().setLoadingLayoutVisibility(Constants.INVISIBLE);
+            getView().setWeatherTextLayoutVisibility(Constants.INVISIBLE);
+            getView().setConnectionIsNeededLayoutVisibility(Constants.VISIBLE);
         }
 
     };

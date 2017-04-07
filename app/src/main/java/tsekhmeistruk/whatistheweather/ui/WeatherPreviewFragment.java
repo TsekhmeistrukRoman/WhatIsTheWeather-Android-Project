@@ -14,7 +14,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +25,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import tsekhmeistruk.whatistheweather.AppWhatIsTheWeather;
+import tsekhmeistruk.whatistheweather.Constants;
 import tsekhmeistruk.whatistheweather.R;
 import tsekhmeistruk.whatistheweather.di.component.AppComponent;
 import tsekhmeistruk.whatistheweather.di.component.DaggerPresentersComponent;
@@ -46,6 +49,13 @@ public class WeatherPreviewFragment extends Fragment implements WeatherForecastV
     ListView weatherOverviewList;
     @BindView(R.id.current_city_name_fragment)
     TextView cityNameFragmentTextView;
+    @BindView(R.id.internet_and_gps_is_needed_text_view)
+    TextView connectionIsNeededTextView;
+
+    @BindView(R.id.weather_in_city)
+    LinearLayout weatherInCityLinearLayout;
+    @BindView(R.id.loading)
+    LinearLayout loadingLinearLayout;
 
     @Inject
     WeatherForecastPresenter weatherForecastPresenter;
@@ -81,14 +91,20 @@ public class WeatherPreviewFragment extends Fragment implements WeatherForecastV
         View view = inflater.inflate(R.layout.fragment_weather_preview, container, false);
         ButterKnife.bind(this, view);
 
+        setConnectionIsNeededLayoutVisibility(Constants.INVISIBLE);
+        setLoadingLayoutVisibility(Constants.INVISIBLE);
+        setWeatherTextLayoutVisibility(Constants.INVISIBLE);
+
         if (InternetConnectivityUtil.isConnected(getContext())) {
             weatherForecastPresenter.getWeatherForecast(locationManager);
         } else {
             showToast(getString(R.string.internet_is_needed));
+            setConnectionIsNeededLayoutVisibility(Constants.VISIBLE);
         }
 
         if (!(LocationUtil.isEnabled(getContext()))) {
             showToast(getString(R.string.gps_is_needed));
+            setConnectionIsNeededLayoutVisibility(Constants.VISIBLE);
         }
 
         return view;
@@ -102,6 +118,10 @@ public class WeatherPreviewFragment extends Fragment implements WeatherForecastV
 
     @Override
     public void showWeatherForecast(WeatherForecast weatherForecast) {
+        setLoadingLayoutVisibility(Constants.INVISIBLE);
+        setConnectionIsNeededLayoutVisibility(Constants.INVISIBLE);
+        setWeatherTextLayoutVisibility(Constants.VISIBLE);
+
         WeatherListAdapter weatherListAdapter
                 = new WeatherListAdapter(getContext(), weatherForecast.getMainWeatherInfoList());
         weatherOverviewList.setAdapter(weatherListAdapter);
@@ -116,6 +136,33 @@ public class WeatherPreviewFragment extends Fragment implements WeatherForecastV
     public void askLocationPermissions() {
         ActivityCompat.requestPermissions(getActivity(),
                 new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+    }
+
+    @Override
+    public void setLoadingLayoutVisibility(int visibility) {
+        if (visibility == Constants.VISIBLE) {
+            loadingLinearLayout.setVisibility(View.VISIBLE);
+        } else {
+            loadingLinearLayout.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    @Override
+    public void setWeatherTextLayoutVisibility(int visibility) {
+        if (visibility == Constants.VISIBLE) {
+            weatherInCityLinearLayout.setVisibility(View.VISIBLE);
+        } else {
+            weatherInCityLinearLayout.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    @Override
+    public void setConnectionIsNeededLayoutVisibility(int visibility) {
+        if (visibility == Constants.VISIBLE) {
+            connectionIsNeededTextView.setVisibility(View.VISIBLE);
+        } else {
+            connectionIsNeededTextView.setVisibility(View.INVISIBLE);
+        }
     }
 
     public AppComponent getAppComponent() {
@@ -144,7 +191,14 @@ public class WeatherPreviewFragment extends Fragment implements WeatherForecastV
                         .getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
 
                 if (wifi.isConnected() || mobile.isConnected()) {
+                    if (LocationUtil.isEnabled(getContext())) {
+                        setConnectionIsNeededLayoutVisibility(Constants.INVISIBLE);
+                        setLoadingLayoutVisibility(Constants.VISIBLE);
+                    }
                     weatherForecastPresenter.getWeatherForecast(locationManager);
+                } else {
+                    setConnectionIsNeededLayoutVisibility(Constants.VISIBLE);
+                    setWeatherTextLayoutVisibility(Constants.INVISIBLE);
                 }
             }
         }

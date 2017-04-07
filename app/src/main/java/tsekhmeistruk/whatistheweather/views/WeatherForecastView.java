@@ -14,4 +14,10 @@ public interface WeatherForecastView extends BaseView {
 
     void askLocationPermissions();
 
+    void setLoadingLayoutVisibility(int visibility);
+
+    void setWeatherTextLayoutVisibility(int visibility);
+
+    void setConnectionIsNeededLayoutVisibility(int visibility);
+
 }
