@@ -114,9 +114,9 @@ public class WeatherForecastPresenter extends BasePresenter<WeatherForecastView>
             getView().askLocationPermissions();
         } else {
             locationManager.requestLocationUpdates(
-                    LocationManager.GPS_PROVIDER, 1000 * 10, 10, locationListener);
+                    LocationManager.GPS_PROVIDER, 1000 * 10, 60 * 5, locationListener);
             locationManager.requestLocationUpdates(
-                    LocationManager.NETWORK_PROVIDER, 1000 * 10, 10, locationListener);
+                    LocationManager.NETWORK_PROVIDER, 1000 * 10, 60 * 5, locationListener);
         }
     }
 
