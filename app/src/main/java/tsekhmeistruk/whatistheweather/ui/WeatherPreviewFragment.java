@@ -5,6 +5,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +32,7 @@ import static android.content.Context.LOCATION_SERVICE;
  * Created by Roman Tsekhmeistruk on 27.03.2017.
  */
 
-public class WeatherPreviewFragment extends BaseFragment implements WeatherForecastView {
+public class WeatherPreviewFragment extends Fragment implements WeatherForecastView {
 
     @BindView(R.id.weather_overviews_container)
     ListView weatherOverviewList;
