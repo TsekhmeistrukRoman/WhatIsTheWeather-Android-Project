@@ -17,7 +17,7 @@ import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import tsekhmeistruk.whatistheweather.R;
 import tsekhmeistruk.whatistheweather.ui.WeatherPreviewFragment;
 
-public class MainActivity extends ActionBarActivity {
+public class MainApplicationActivity extends ActionBarActivity {
 
     private Toolbar toolbar;
 
@@ -42,16 +42,15 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void initializeToolbar() {
-        ActionBarActivity activity = (ActionBarActivity) this;
-        toolbar = (Toolbar) activity.findViewById(R.id.toolbar);
-        activity.setSupportActionBar(toolbar);
-        activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        activity.getSupportActionBar().setDisplayShowTitleEnabled(false);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
     private void initializeNavigationDrawer() {
         new Drawer()
-                .withActivity(MainActivity.this)
+                .withActivity(MainApplicationActivity.this)
                 .withToolbar(toolbar)
                 .withActionBarDrawerToggle(true)
                 .withHeader(R.layout.header_navigation_drawer)

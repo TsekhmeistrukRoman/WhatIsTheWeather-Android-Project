@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorLightGray"
-    tools:context=".activities.MainActivity">
+    tools:context=".activities.MainApplicationActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
