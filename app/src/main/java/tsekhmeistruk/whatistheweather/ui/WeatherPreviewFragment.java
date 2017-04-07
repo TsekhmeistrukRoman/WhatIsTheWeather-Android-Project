@@ -95,8 +95,8 @@ public class WeatherPreviewFragment extends Fragment implements WeatherForecastV
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
+    public void onDestroy() {
+        super.onDestroy();
         getActivity().unregisterReceiver(networkChangeReceiver);
     }
 
