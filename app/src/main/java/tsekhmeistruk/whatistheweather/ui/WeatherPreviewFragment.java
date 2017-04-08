@@ -107,6 +107,11 @@ public class WeatherPreviewFragment extends Fragment implements WeatherForecastV
             setConnectionIsNeededLayoutVisibility(Constants.VISIBLE);
         }
 
+        if ((InternetConnectivityUtil.isConnected(getContext()))
+                && (LocationUtil.isEnabled(getContext()))) {
+            setLoadingLayoutVisibility(Constants.VISIBLE);
+        }
+
         return view;
     }
 
