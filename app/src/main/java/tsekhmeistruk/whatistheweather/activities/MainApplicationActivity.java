@@ -28,6 +28,8 @@ public class MainApplicationActivity extends ActionBarActivity {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
+    private Drawer.Result drawerResult;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +41,15 @@ public class MainApplicationActivity extends ActionBarActivity {
         initializeNavigationDrawer();
 
         startFragment(WeatherPreviewFragment.newInstance());
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (drawerResult.isDrawerOpen()) {
+            drawerResult.closeDrawer();
+        } else {
+            super.onBackPressed();
+        }
     }
 
     public void startFragment(Fragment fragment) {
@@ -57,7 +68,7 @@ public class MainApplicationActivity extends ActionBarActivity {
     }
 
     private void initializeNavigationDrawer() {
-        new Drawer()
+        drawerResult = new Drawer()
                 .withActivity(MainApplicationActivity.this)
                 .withToolbar(toolbar)
                 .withActionBarDrawerToggle(true)
