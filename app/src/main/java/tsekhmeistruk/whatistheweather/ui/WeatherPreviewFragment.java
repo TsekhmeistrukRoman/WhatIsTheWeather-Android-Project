@@ -57,6 +57,9 @@ public class WeatherPreviewFragment extends Fragment implements WeatherForecastV
     @BindView(R.id.loading)
     LinearLayout loadingLinearLayout;
 
+    @BindView(R.id.loading_progress_bar)
+    ProgressBar loadingProgressBar;
+
     @Inject
     WeatherForecastPresenter weatherForecastPresenter;
 
@@ -158,8 +161,10 @@ public class WeatherPreviewFragment extends Fragment implements WeatherForecastV
     public void setLoadingLayoutVisibility(int visibility) {
         if (visibility == Constants.VISIBLE) {
             loadingLinearLayout.setVisibility(View.VISIBLE);
+            loadingProgressBar.setVisibility(View.VISIBLE);
         } else {
             loadingLinearLayout.setVisibility(View.INVISIBLE);
+            loadingProgressBar.setVisibility(View.INVISIBLE);
         }
     }
 

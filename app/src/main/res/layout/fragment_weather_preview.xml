@@ -13,7 +13,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:layout_above="@+id/weather_overviews_container"
+        android:layout_above="@+id/weather_overviews"
         android:src="@drawable/black_gradient" />
 
     <LinearLayout
@@ -42,15 +42,6 @@
             android:textSize="25sp" />
 
     </LinearLayout>
-
-    <ListView
-        android:id="@+id/weather_overviews_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/background"
-        android:dividerHeight="5.0sp">
-
-    </ListView>
 
     <LinearLayout
         android:id="@+id/loading"
@@ -88,5 +79,26 @@
         android:text="@string/internet_and_gps_are_needed"
         android:textColor="@color/colorWhite"
         android:textSize="25sp" />
+
+    <RelativeLayout
+        android:id="@+id/weather_overviews"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/background">
+
+        <ListView
+            android:id="@+id/weather_overviews_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:dividerHeight="5.0sp" />
+
+        <ProgressBar
+            android:id="@+id/loading_progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true" />
+
+    </RelativeLayout>
 
 </RelativeLayout>
