@@ -1,15 +1,21 @@
 package tsekhmeistruk.whatistheweather.activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.location.places.AutocompleteFilter;
+import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
@@ -101,7 +107,39 @@ public class MainApplicationActivity extends ActionBarActivity {
                     public void onDrawerClosed(View drawerView) {
                     }
                 })
+                .withOnDrawerItemClickListener((parent, view, position, id, drawerItem) -> {
+                    int drawerItemId = drawerItem.getIdentifier();
+                    switch (drawerItemId) {
+                        case 1:
+                            startFragment(WeatherPreviewFragment.newInstance());
+                            break;
+                        case 2:
+                            startGooglePlacesAutocompleteIntent();
+                            break;
+                        case 3:
+                            break;
+                    }
+                })
                 .build();
+    }
+
+    private void startGooglePlacesAutocompleteIntent() {
+        int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;
+
+        try {
+            AutocompleteFilter typeFilter = new AutocompleteFilter.Builder()
+                    .setTypeFilter(AutocompleteFilter.TYPE_FILTER_CITIES)
+                    .build();
+
+            Intent intent =
+                    new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_OVERLAY)
+                            .setFilter(typeFilter)
+                            .build(this);
+            startActivityForResult(intent, PLACE_AUTOCOMPLETE_REQUEST_CODE);
+        } catch (GooglePlayServicesRepairableException | GooglePlayServicesNotAvailableException e) {
+            Log.d("Google api exception", e.getMessage());
+        }
+
     }
 
 }

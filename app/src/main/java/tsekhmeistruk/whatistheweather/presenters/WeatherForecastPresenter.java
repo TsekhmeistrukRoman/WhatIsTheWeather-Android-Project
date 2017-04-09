@@ -70,7 +70,7 @@ public class WeatherForecastPresenter extends BasePresenter<WeatherForecastView>
             }
 
         } catch (Exception e) {
-            return getView().getContext().getString(R.string.unknown_city);
+            return "Unknown city";
         }
     }
 
