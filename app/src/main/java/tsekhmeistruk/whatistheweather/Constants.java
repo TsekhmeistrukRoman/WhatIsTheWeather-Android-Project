@@ -12,4 +12,6 @@ public class Constants {
     public static final int VISIBLE = 0;
     public static final int INVISIBLE = 1;
 
+    public static final int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;
+
 }
