@@ -17,18 +17,18 @@ public class TypefaceCache {
 
     private static final String DEFAULT = "Montserrat-Regular.ttf";
 
-    private static WeakHashMap<String, Typeface> sCache;
+    private static WeakHashMap<String, Typeface> cache;
 
     private static Typeface getTypeface(Context context, String typefaceName) {
-        if (sCache == null) {
-            sCache = new WeakHashMap<>(5);
+        if (cache == null) {
+            cache = new WeakHashMap<>(5);
         }
 
-        Typeface tf = sCache.get(typefaceName);
+        Typeface tf = cache.get(typefaceName);
         if (tf == null) {
             tf = Typeface.createFromAsset(context.getAssets(),
                     String.format("fonts/%s", typefaceName));
-            sCache.put(typefaceName, tf);
+            cache.put(typefaceName, tf);
         }
 
         return tf;

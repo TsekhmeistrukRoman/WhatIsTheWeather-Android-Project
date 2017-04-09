@@ -10,24 +10,24 @@ import tsekhmeistruk.whatistheweather.views.BaseView;
 
 public class BasePresenter<T extends BaseView> {
 
-    private T mView;
+    private T view;
 
-    private CompositeSubscription mCompositeSubscription = new CompositeSubscription();
+    private CompositeSubscription compositeSubscription = new CompositeSubscription();
 
     public T getView() {
-        return mView;
+        return view;
     }
 
     public void setView(T view) {
-        mView = view;
+        this.view = view;
     }
 
     public void destroy() {
-        mCompositeSubscription.clear();
+        compositeSubscription.clear();
     }
 
     protected Subscription subscribe(Subscription subscription) {
-        mCompositeSubscription.add(subscription);
+        compositeSubscription.add(subscription);
         return subscription;
     }
 

@@ -20,14 +20,4 @@ public class InternetConnectivityUtil {
         return (info != null && info.isConnected());
     }
 
-    public static boolean isConnectedWifi(Context context) {
-        NetworkInfo info = InternetConnectivityUtil.getNetworkInfo(context);
-        return (info != null && info.isConnected() && info.getType() == ConnectivityManager.TYPE_WIFI);
-    }
-
-    public static boolean isConnectedMobile(Context context) {
-        NetworkInfo info = InternetConnectivityUtil.getNetworkInfo(context);
-        return (info != null && info.isConnected() && info.getType() == ConnectivityManager.TYPE_MOBILE);
-    }
-
 }
