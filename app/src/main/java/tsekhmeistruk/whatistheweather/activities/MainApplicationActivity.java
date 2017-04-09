@@ -111,8 +111,7 @@ public class MainApplicationActivity extends ActionBarActivity {
                                 .withIdentifier(1),
                         new PrimaryDrawerItem().withName(getString(R.string.find_city))
                                 .withIcon(ContextCompat.getDrawable(getApplicationContext(),
-                                        R.drawable.search)).withIdentifier(2),
-                        new DividerDrawerItem()
+                                        R.drawable.search)).withIdentifier(2)
                 )
                 .withOnDrawerListener(new Drawer.OnDrawerListener() {
                     @Override
