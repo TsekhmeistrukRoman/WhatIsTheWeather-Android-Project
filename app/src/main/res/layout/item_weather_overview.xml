@@ -123,42 +123,30 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:adjustViewBounds="true"
-                android:src="@drawable/humidity" />
-
-            <tsekhmeistruk.whatistheweather.widgets.views.FontTextView
-                android:id="@+id/humidity_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:text="48"
-                android:textColor="@color/colorGray"
-                android:textSize="@dimen/description_text_size" />
-
-            <tsekhmeistruk.whatistheweather.widgets.views.FontTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:text="@string/percent"
-                android:textColor="@color/colorGray"
-                android:textSize="@dimen/description_text_size" />
-
-        </LinearLayout>
+        android:layout_weight="1">
 
         <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/arrow" />
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/humidity" />
+
+        <tsekhmeistruk.whatistheweather.widgets.views.FontTextView
+            android:id="@+id/humidity_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="48"
+            android:textColor="@color/colorGray"
+            android:textSize="@dimen/description_text_size" />
+
+        <tsekhmeistruk.whatistheweather.widgets.views.FontTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="@string/percent"
+            android:textColor="@color/colorGray"
+            android:textSize="@dimen/description_text_size" />
 
     </LinearLayout>
 
