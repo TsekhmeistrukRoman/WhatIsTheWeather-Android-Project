@@ -95,21 +95,32 @@ public class WeatherPreviewFragment extends Fragment implements WeatherForecastV
         setLoadingLayoutVisibility(Constants.INVISIBLE);
         setWeatherTextLayoutVisibility(Constants.INVISIBLE);
 
-        if (InternetConnectivityUtil.isConnected(getContext())) {
-            weatherForecastPresenter.getWeatherForecast(locationManager);
+        Bundle extras = getArguments();
+        if (extras != null) {
+            if (InternetConnectivityUtil.isConnected(getContext())) {
+                weatherForecastPresenter.getWeatherForecast(extras.getString("name"),
+                        extras.getDouble("latitude"),
+                        extras.getDouble("longitude"));
+            } else {
+                showToast(getString(R.string.internet_is_needed));
+            }
         } else {
-            showToast(getString(R.string.internet_is_needed));
-            setConnectionIsNeededLayoutVisibility(Constants.VISIBLE);
-        }
+            if (InternetConnectivityUtil.isConnected(getContext())) {
+                weatherForecastPresenter.getWeatherForecast(locationManager);
+            } else {
+                showToast(getString(R.string.internet_is_needed));
+                setConnectionIsNeededLayoutVisibility(Constants.VISIBLE);
+            }
 
-        if (!(LocationUtil.isEnabled(getContext()))) {
-            showToast(getString(R.string.gps_is_needed));
-            setConnectionIsNeededLayoutVisibility(Constants.VISIBLE);
-        }
+            if (!(LocationUtil.isEnabled(getContext()))) {
+                showToast(getString(R.string.gps_is_needed));
+                setConnectionIsNeededLayoutVisibility(Constants.VISIBLE);
+            }
 
-        if ((InternetConnectivityUtil.isConnected(getContext()))
-                && (LocationUtil.isEnabled(getContext()))) {
-            setLoadingLayoutVisibility(Constants.VISIBLE);
+            if ((InternetConnectivityUtil.isConnected(getContext()))
+                    && (LocationUtil.isEnabled(getContext()))) {
+                setLoadingLayoutVisibility(Constants.VISIBLE);
+            }
         }
 
         return view;

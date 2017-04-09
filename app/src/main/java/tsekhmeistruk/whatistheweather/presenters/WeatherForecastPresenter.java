@@ -120,4 +120,9 @@ public class WeatherForecastPresenter extends BasePresenter<WeatherForecastView>
         }
     }
 
+    public void getWeatherForecast(String name, double latitude, double longtitude) {
+        getView().setCityName(name);
+        loadWeatherForecast(latitude, longtitude);
+    }
+
 }
