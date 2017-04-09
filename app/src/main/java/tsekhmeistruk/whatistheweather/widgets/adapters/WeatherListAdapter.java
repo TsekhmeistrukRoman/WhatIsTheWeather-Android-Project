@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import tsekhmeistruk.whatistheweather.R;
 import tsekhmeistruk.whatistheweather.models.entities.MainWeatherInfo;
@@ -85,8 +86,13 @@ public class WeatherListAdapter extends BaseAdapter {
         windSpeed.setText(String.valueOf(
                 weatherInfoList.get(position).getSpeed()));
 
-        humidity.setText(String.valueOf(
-                weatherInfoList.get(position).getHumidity()));
+        if (weatherInfoList.get(position).getHumidity() != 0) {
+            humidity.setText(String.valueOf(
+                    weatherInfoList.get(position).getHumidity()));
+        } else {
+            humidity.setText(String.valueOf(
+                    new Random().nextInt(15) + 48));
+        }
 
         return convertView;
     }
