@@ -17,16 +17,16 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="Fri"
-            android:textColor="@color/colorBlack"
-            android:textSize="@dimen/date_text_size" />
+            android:textColor="@color/colorGray"
+            android:textSize="@dimen/description_text_size" />
 
         <tsekhmeistruk.whatistheweather.widgets.views.FontTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="@string/comma_divider"
-            android:textColor="@color/colorBlack"
-            android:textSize="@dimen/date_text_size" />
+            android:textColor="@color/colorGray"
+            android:textSize="@dimen/description_text_size" />
 
         <tsekhmeistruk.whatistheweather.widgets.views.FontTextView
             android:id="@+id/date_text_view"
@@ -35,8 +35,8 @@
             android:layout_marginLeft="8dp"
             android:layout_marginTop="10dp"
             android:text="17.07"
-            android:textColor="@color/colorBlack"
-            android:textSize="@dimen/date_text_size" />
+            android:textColor="@color/colorGray"
+            android:textSize="@dimen/description_text_size" />
 
     </LinearLayout>
 
@@ -46,8 +46,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
         android:text="Mostly sunny"
-        android:textColor="@color/colorGray"
-        android:textSize="@dimen/description_text_size" />
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/date_text_size" />
 
     <LinearLayout
         android:layout_width="match_parent"
