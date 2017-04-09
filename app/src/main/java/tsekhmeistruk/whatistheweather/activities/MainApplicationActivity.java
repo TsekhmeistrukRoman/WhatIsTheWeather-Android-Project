@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
 
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
@@ -18,11 +19,11 @@ import com.google.android.gms.location.places.AutocompleteFilter;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 import com.mikepenz.materialdrawer.Drawer;
-import com.mikepenz.materialdrawer.model.DividerDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import tsekhmeistruk.whatistheweather.Constants;
 import tsekhmeistruk.whatistheweather.R;
 import tsekhmeistruk.whatistheweather.ui.WeatherPreviewFragment;
@@ -35,6 +36,8 @@ public class MainApplicationActivity extends ActionBarActivity {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+    @BindView(R.id.search_button)
+    ImageView searchButton;
 
     private Drawer.Result drawerResult;
 
@@ -81,6 +84,11 @@ public class MainApplicationActivity extends ActionBarActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         //No call for super(). Bug on API Level > 11.
+    }
+
+    @OnClick(R.id.search_button)
+    public void searchCity() {
+        startGooglePlacesAutocompleteIntent();
     }
 
     public void startFragment(Fragment fragment) {

@@ -13,7 +13,17 @@
         android:elevation="3dp"
         android:minHeight="?attr/actionBarSize"
         android:paddingTop="@dimen/tool_bar_top_padding"
-        android:transitionName="actionBar" />
+        android:transitionName="actionBar">
+
+        <ImageView
+            android:id="@+id/search_button"
+            android:layout_width="27dp"
+            android:layout_height="27dp"
+            android:layout_marginRight="22dp"
+            android:layout_gravity="right"
+            android:src="@drawable/search_button" />
+
+    </android.support.v7.widget.Toolbar>
 
     <RelativeLayout
         android:id="@+id/container"
