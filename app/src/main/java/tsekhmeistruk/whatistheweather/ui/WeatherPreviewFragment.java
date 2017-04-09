@@ -101,6 +101,7 @@ public class WeatherPreviewFragment extends Fragment implements WeatherForecastV
         Bundle extras = getArguments();
         if (extras != null) {
             if (InternetConnectivityUtil.isConnected(getContext())) {
+                setLoadingLayoutVisibility(Constants.VISIBLE);
                 weatherForecastPresenter.getWeatherForecast(extras.getString("name"),
                         extras.getDouble("latitude"),
                         extras.getDouble("longitude"));
