@@ -87,10 +87,7 @@ public class MainApplicationActivity extends ActionBarActivity {
                         new PrimaryDrawerItem().withName(getString(R.string.find_city))
                                 .withIcon(ContextCompat.getDrawable(getApplicationContext(),
                                         R.drawable.search)).withIdentifier(2),
-                        new DividerDrawerItem(),
-                        new PrimaryDrawerItem().withName(getString(R.string.rate_application))
-                                .withIcon(ContextCompat.getDrawable(getApplicationContext(),
-                                        R.drawable.google_play)).withIdentifier(3)
+                        new DividerDrawerItem()
                 )
                 .withOnDrawerListener(new Drawer.OnDrawerListener() {
                     @Override
@@ -115,8 +112,6 @@ public class MainApplicationActivity extends ActionBarActivity {
                             break;
                         case 2:
                             startGooglePlacesAutocompleteIntent();
-                            break;
-                        case 3:
                             break;
                     }
                 })
