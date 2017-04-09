@@ -90,7 +90,8 @@ public class WeatherForecastPresenter extends BasePresenter<WeatherForecastView>
         @Override
         public void onProviderEnabled(String provider) {
             if (provider.equals(LocationManager.GPS_PROVIDER)) {
-                if (InternetConnectivityUtil.isConnected(getView().getContext())) {
+                if ((getView().getContext() != null)
+                        && (InternetConnectivityUtil.isConnected(getView().getContext()))) {
                     getView().setLoadingLayoutVisibility(Constants.VISIBLE);
                     getView().setConnectionIsNeededLayoutVisibility(Constants.INVISIBLE);
                 }
