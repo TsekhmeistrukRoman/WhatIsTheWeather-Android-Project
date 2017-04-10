@@ -26,7 +26,7 @@ android {
         multiDexEnabled true
     }
     buildTypes {
-        WhatIsTheWeather {
+        release {
             signingConfig signingConfigs.config
         }
     }
