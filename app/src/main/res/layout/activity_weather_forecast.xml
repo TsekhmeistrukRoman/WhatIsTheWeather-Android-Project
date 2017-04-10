@@ -5,6 +5,11 @@
     android:background="@color/colorLightGray"
     tools:context=".activities.MainApplicationActivity">
 
+    <RelativeLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -24,10 +29,5 @@
             android:src="@drawable/search_button" />
 
     </android.support.v7.widget.Toolbar>
-
-    <RelativeLayout
-        android:id="@+id/container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 
 </RelativeLayout>
