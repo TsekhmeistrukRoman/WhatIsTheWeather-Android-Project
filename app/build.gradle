@@ -80,4 +80,7 @@ dependencies {
     // Google play services
     compile 'com.google.android.gms:play-services:10.2.1'
 
+    // Multidex support
+    compile 'com.android.support:multidex:1.0.1'
+
 }
