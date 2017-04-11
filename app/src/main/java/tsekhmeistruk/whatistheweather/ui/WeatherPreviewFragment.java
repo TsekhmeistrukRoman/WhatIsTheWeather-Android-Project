@@ -3,14 +3,17 @@ package tsekhmeistruk.whatistheweather.ui;
 import android.Manifest;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -119,6 +122,12 @@ public class WeatherPreviewFragment extends Fragment implements WeatherForecastV
             if (!(LocationUtil.isEnabled(getContext()))) {
                 showToast(getString(R.string.gps_is_needed));
                 setConnectionIsNeededLayoutVisibility(Constants.VISIBLE);
+                new AlertDialog.Builder(getActivity())
+                        .setMessage(R.string.enable_gps_question)
+                        .setNegativeButton("No", (arg0, arg1) -> { })
+                        .setPositiveButton("Yes", (arg0, arg1)
+                                -> startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)))
+                        .create().show();
             }
 
             if ((InternetConnectivityUtil.isConnected(getContext()))
