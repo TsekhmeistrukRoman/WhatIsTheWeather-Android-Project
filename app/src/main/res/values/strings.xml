@@ -17,7 +17,7 @@
     <string name="what_is_the_weather">What Is The Weather</string>
     <string name="unknown_city">Unknown City</string>
     <string name="your_city">your city</string>
-    <string name="internet_is_needed">Internet connection is needed</string>
+    <string name="internet_is_needed">Internet connection is needed. Enable it!</string>
     <string name="gps_is_needed">GPS is needed</string>
     <string name="loading">Loading</string>
     <string name="internet_and_gps_are_needed">Internet and GPS are needed</string>
