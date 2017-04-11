@@ -10,6 +10,10 @@ apply plugin: 'com.neenbedankt.android-apt'
 android {
     signingConfigs {
         config {
+            keyAlias 'app123'
+            keyPassword 'app123'
+            storeFile file('D:/Projects/Android/MyProjects/forGP/my_key_store.jks')
+            storePassword 'app123'
         }
     }
     compileSdkVersion 25
@@ -27,6 +31,9 @@ android {
     }
     buildTypes {
         release {
+            signingConfig signingConfigs.config
+        }
+        debug {
             signingConfig signingConfigs.config
         }
     }
