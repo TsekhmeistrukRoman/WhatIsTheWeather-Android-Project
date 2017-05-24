@@ -93,60 +93,79 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp">
+        android:layout_marginTop="25dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/wind" />
+
+                <tsekhmeistruk.whatistheweather.widgets.views.FontTextView
+                    android:id="@+id/wind_speed_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:text="5.61"
+                    android:textColor="@color/colorGray"
+                    android:textSize="@dimen/description_text_size" />
+
+                <tsekhmeistruk.whatistheweather.widgets.views.FontTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/mp_h"
+                    android:textColor="@color/colorGray"
+                    android:textSize="@dimen/description_text_size" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/humidity" />
+
+                <tsekhmeistruk.whatistheweather.widgets.views.FontTextView
+                    android:id="@+id/humidity_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:text="48"
+                    android:textColor="@color/colorGray"
+                    android:textSize="@dimen/description_text_size" />
+
+                <tsekhmeistruk.whatistheweather.widgets.views.FontTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/percent"
+                    android:textColor="@color/colorGray"
+                    android:textSize="@dimen/description_text_size" />
+
+            </LinearLayout>
+        </LinearLayout>
 
         <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:adjustViewBounds="true"
-            android:src="@drawable/wind" />
-
-        <tsekhmeistruk.whatistheweather.widgets.views.FontTextView
-            android:id="@+id/wind_speed_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:text="5.61"
-            android:textColor="@color/colorGray"
-            android:textSize="@dimen/description_text_size" />
-
-        <tsekhmeistruk.whatistheweather.widgets.views.FontTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:text="@string/mp_h"
-            android:textColor="@color/colorGray"
-            android:textSize="@dimen/description_text_size" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
-
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:adjustViewBounds="true"
-            android:src="@drawable/humidity" />
-
-        <tsekhmeistruk.whatistheweather.widgets.views.FontTextView
-            android:id="@+id/humidity_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:text="48"
-            android:textColor="@color/colorGray"
-            android:textSize="@dimen/description_text_size" />
-
-        <tsekhmeistruk.whatistheweather.widgets.views.FontTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:text="@string/percent"
-            android:textColor="@color/colorGray"
-            android:textSize="@dimen/description_text_size" />
+            android:layout_width="35dp"
+            android:layout_height="45dp"
+            android:src="@drawable/arrow" />
 
     </LinearLayout>
 
