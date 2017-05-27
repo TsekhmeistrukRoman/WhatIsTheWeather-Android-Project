@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/full_weather_background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:src="@drawable/d01back" />
+
+    <ImageView
+        android:id="@+id/gradient"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@+id/full_weather_background"
+        android:layout_marginTop="-250dp"
+        android:src="@drawable/gradient" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/gradient"
+        android:background="@color/colorBlack"
+        android:src="@drawable/gradient" />
+
+    <TextView
+        android:id="@+id/average_temperature_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="150dp"
+        android:text="21°C"
+        android:textSize="75sp" />
+
+    <TextView
+        android:id="@+id/weather_description_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/average_temperature_text_view"
+        android:layout_centerHorizontal="true"
+        android:text="Sky is clear"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/date_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="130dp"
+        android:text="17.07.1998"
+        android:textSize="20sp" />
+
+    <TableLayout
+        android:id="@+id/temperature_table"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/gradient"
+        android:layout_centerHorizontal="true"
+        android:stretchColumns="*">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:gravity="center_horizontal"
+                android:src="@drawable/night" />
+
+            <ImageView
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:gravity="center_horizontal"
+                android:src="@drawable/morning" />
+
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:gravity="center_horizontal"
+                android:src="@drawable/day" />
+
+            <ImageView
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:gravity="center_horizontal"
+                android:src="@drawable/evening" />
+
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/night_temperature"
+                android:layout_gravity="center"
+                android:text="10°C"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/morning_temperature"
+                android:layout_gravity="center"
+                android:text="10°C"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/day_temperature"
+                android:layout_gravity="center"
+                android:text="10°C"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/evening_temperature"
+                android:layout_gravity="center"
+                android:text="10°C"
+                android:textSize="20sp" />
+
+        </TableRow>
+
+    </TableLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/temperature_table"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/wind" />
+
+            <tsekhmeistruk.whatistheweather.widgets.views.FontTextView
+                android:id="@+id/wind_speed_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="15dp"
+                android:text="5.61"
+                android:textSize="20sp" />
+
+            <tsekhmeistruk.whatistheweather.widgets.views.FontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/mp_h"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/humidity" />
+
+            <tsekhmeistruk.whatistheweather.widgets.views.FontTextView
+                android:id="@+id/humidity_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="15dp"
+                android:text="48"
+                android:textSize="20sp" />
+
+            <tsekhmeistruk.whatistheweather.widgets.views.FontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/percent"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
