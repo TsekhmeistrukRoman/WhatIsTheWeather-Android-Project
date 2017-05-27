@@ -60,6 +60,8 @@ public class MainApplicationActivity extends ActionBarActivity {
     public void onBackPressed() {
         if (drawerResult.isDrawerOpen()) {
             drawerResult.closeDrawer();
+        } else if (getFragmentManager().getBackStackEntryCount() != 0) {
+            getFragmentManager().popBackStackImmediate();
         } else {
             super.onBackPressed();
         }
@@ -97,7 +99,7 @@ public class MainApplicationActivity extends ActionBarActivity {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
 
         fragmentTransaction.replace(R.id.container, fragment)
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).addToBackStack(null);
 
         fragmentTransaction.commit();
     }
