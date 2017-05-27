@@ -126,6 +126,7 @@
     </TableLayout>
 
     <LinearLayout
+        android:id="@+id/wind_and_humidity_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/temperature_table"
@@ -191,6 +192,38 @@
                 android:textSize="20sp" />
 
         </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/wind_and_humidity_container"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/clouds" />
+
+        <tsekhmeistruk.whatistheweather.widgets.views.FontTextView
+            android:id="@+id/clouds_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:text="48"
+            android:textSize="20sp" />
+
+        <tsekhmeistruk.whatistheweather.widgets.views.FontTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            android:text="@string/percent"
+            android:textSize="20sp" />
+
     </LinearLayout>
 
 </RelativeLayout>
