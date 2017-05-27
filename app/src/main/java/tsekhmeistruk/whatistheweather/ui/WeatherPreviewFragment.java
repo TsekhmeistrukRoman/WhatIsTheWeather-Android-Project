@@ -17,11 +17,14 @@ import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.Serializable;
 
 import javax.inject.Inject;
 
@@ -30,6 +33,7 @@ import butterknife.ButterKnife;
 import tsekhmeistruk.whatistheweather.AppWhatIsTheWeather;
 import tsekhmeistruk.whatistheweather.Constants;
 import tsekhmeistruk.whatistheweather.R;
+import tsekhmeistruk.whatistheweather.activities.MainApplicationActivity;
 import tsekhmeistruk.whatistheweather.di.component.AppComponent;
 import tsekhmeistruk.whatistheweather.di.component.DaggerPresentersComponent;
 import tsekhmeistruk.whatistheweather.di.module.PresentersModule;
@@ -66,6 +70,7 @@ public class WeatherPreviewFragment extends Fragment implements WeatherForecastV
     @Inject
     WeatherForecastPresenter weatherForecastPresenter;
 
+    private WeatherListAdapter weatherListAdapter;
     private LocationManager locationManager;
     private NetworkChangeReceiver networkChangeReceiver = new NetworkChangeReceiver();
 
@@ -124,7 +129,8 @@ public class WeatherPreviewFragment extends Fragment implements WeatherForecastV
                 setConnectionIsNeededLayoutVisibility(Constants.VISIBLE);
                 new AlertDialog.Builder(getActivity())
                         .setMessage(R.string.enable_gps_question)
-                        .setNegativeButton("No", (arg0, arg1) -> { })
+                        .setNegativeButton("No", (arg0, arg1) -> {
+                        })
                         .setPositiveButton("Yes", (arg0, arg1)
                                 -> startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)))
                         .create().show();
@@ -135,6 +141,19 @@ public class WeatherPreviewFragment extends Fragment implements WeatherForecastV
                 setLoadingLayoutVisibility(Constants.VISIBLE);
             }
         }
+
+        weatherOverviewList.setOnItemClickListener((parent, view1, position, id) -> {
+            FullWeatherForecastFragment fullWeatherForecastFragment
+                    = FullWeatherForecastFragment.newInstance();
+
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("full_weather_information",
+                    weatherListAdapter.getItem(position));
+            fullWeatherForecastFragment.setArguments(bundle);
+
+            ((MainApplicationActivity) WeatherPreviewFragment.this.getActivity())
+                    .startFragment(fullWeatherForecastFragment);
+        });
 
         return view;
     }
@@ -151,7 +170,7 @@ public class WeatherPreviewFragment extends Fragment implements WeatherForecastV
         setConnectionIsNeededLayoutVisibility(Constants.INVISIBLE);
         setWeatherTextLayoutVisibility(Constants.VISIBLE);
 
-        WeatherListAdapter weatherListAdapter
+        weatherListAdapter
                 = new WeatherListAdapter(getContext(), weatherForecast.getMainWeatherInfoList());
         weatherOverviewList.setAdapter(weatherListAdapter);
     }
