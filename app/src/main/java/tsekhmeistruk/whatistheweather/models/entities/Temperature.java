@@ -3,7 +3,9 @@ package tsekhmeistruk.whatistheweather.models.entities;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Temperature {
+import java.io.Serializable;
+
+public class Temperature implements Serializable {
 
     @SerializedName("day")
     @Expose

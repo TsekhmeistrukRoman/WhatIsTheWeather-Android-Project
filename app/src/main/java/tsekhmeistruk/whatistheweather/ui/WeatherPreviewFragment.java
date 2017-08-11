@@ -33,6 +33,7 @@ import butterknife.ButterKnife;
 import tsekhmeistruk.whatistheweather.AppWhatIsTheWeather;
 import tsekhmeistruk.whatistheweather.Constants;
 import tsekhmeistruk.whatistheweather.R;
+import tsekhmeistruk.whatistheweather.activities.FullWeatherForecastActivity;
 import tsekhmeistruk.whatistheweather.activities.MainApplicationActivity;
 import tsekhmeistruk.whatistheweather.di.component.AppComponent;
 import tsekhmeistruk.whatistheweather.di.component.DaggerPresentersComponent;
@@ -143,16 +144,10 @@ public class WeatherPreviewFragment extends Fragment implements WeatherForecastV
         }
 
         weatherOverviewList.setOnItemClickListener((parent, view1, position, id) -> {
-            FullWeatherForecastFragment fullWeatherForecastFragment
-                    = FullWeatherForecastFragment.newInstance();
-
-            Bundle bundle = new Bundle();
-            bundle.putSerializable("full_weather_information",
+            Intent intent = new Intent(getActivity(), FullWeatherForecastActivity.class);
+            intent.putExtra(Constants.FULL_WEATHER_INFORMATION,
                     weatherListAdapter.getItem(position));
-            fullWeatherForecastFragment.setArguments(bundle);
-
-            ((MainApplicationActivity) WeatherPreviewFragment.this.getActivity())
-                    .startFragment(fullWeatherForecastFragment);
+            startActivity(intent);
         });
 
         return view;

@@ -14,4 +14,6 @@ public class Constants {
 
     public static final int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;
 
+    public static final String FULL_WEATHER_INFORMATION = "full_weather_information";
+
 }

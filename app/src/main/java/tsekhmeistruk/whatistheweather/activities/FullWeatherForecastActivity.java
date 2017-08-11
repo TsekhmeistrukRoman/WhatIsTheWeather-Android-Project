@@ -1,30 +1,28 @@
-package tsekhmeistruk.whatistheweather.ui;
+package tsekhmeistruk.whatistheweather.activities;
 
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.data.StreamAssetPathFetcher;
 
 import java.util.Date;
 import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import tsekhmeistruk.whatistheweather.Constants;
 import tsekhmeistruk.whatistheweather.R;
 import tsekhmeistruk.whatistheweather.models.entities.MainWeatherInfo;
 
 /**
- * Created by Roman Tsekhmeistruk on 27.05.2017.
+ * Created by Roman Tsekhmeistruk on 11.08.2017.
  */
 
-public class FullWeatherForecastFragment extends Fragment {
+public class FullWeatherForecastActivity extends AppCompatActivity {
 
     @BindView(R.id.full_weather_background)
     ImageView backgroundImage;
@@ -49,31 +47,29 @@ public class FullWeatherForecastFragment extends Fragment {
     @BindView(R.id.clouds_text_view)
     TextView cloudsTextView;
 
-    public static FullWeatherForecastFragment newInstance() {
-        return new FullWeatherForecastFragment();
-    }
-
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_full_weather_forecast, container, false);
-        ButterKnife.bind(this, view);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_full_weather_forecast);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
+        ButterKnife.bind(this);
+
+        Intent intent = getIntent();
         MainWeatherInfo weatherInfo
-                = (MainWeatherInfo) getArguments().getSerializable("full_weather_information");
+                = (MainWeatherInfo) intent.getExtras().getSerializable(Constants.FULL_WEATHER_INFORMATION);
 
-        Glide.with(getContext())
-                .load(getContext().getResources().getIdentifier(
+        Glide.with(this)
+                .load(getResources().getIdentifier(
                         new StringBuilder(weatherInfo
                                 .getWeather().get(0).getIcon()).reverse().toString() + "back",
                         "drawable",
-                        getContext().getPackageName()))
+                        getPackageName()))
                 .centerCrop().fitCenter().into(backgroundImage);
 
         averageTemperatureTextView.setText(String.valueOf(
                 weatherInfo.getTemperature().getDayTemperature().intValue()
-                        + getContext().getString(R.string.celsius)));
+                        + getString(R.string.celsius)));
         shortWeatherDescriptionTextView.setText(
                 String.valueOf(weatherInfo.getWeather().get(0).getDescription()));
 
@@ -82,16 +78,16 @@ public class FullWeatherForecastFragment extends Fragment {
 
         nightTemperatureTextView.setText(String.valueOf(
                 weatherInfo.getTemperature().getNightTemperature().intValue()
-                        + getContext().getString(R.string.celsius)));
+                        + getString(R.string.celsius)));
         morningTemperatureTextView.setText(String.valueOf(
                 weatherInfo.getTemperature().getMorningTemperature().intValue()
-                        + getContext().getString(R.string.celsius)));
+                        + getString(R.string.celsius)));
         dayTemperatureTextView.setText(String.valueOf(
                 weatherInfo.getTemperature().getDayTemperature().intValue()
-                        + getContext().getString(R.string.celsius)));
+                        + getString(R.string.celsius)));
         eveningTemperatureTextView.setText(String.valueOf(
                 weatherInfo.getTemperature().getEveningTemperature().intValue()
-                        + getContext().getString(R.string.celsius)));
+                        + getString(R.string.celsius)));
 
         windSpeedTextView.setText(String.valueOf(weatherInfo.getSpeed()));
 
@@ -104,8 +100,6 @@ public class FullWeatherForecastFragment extends Fragment {
         }
 
         cloudsTextView.setText(String.valueOf(weatherInfo.getClouds()));
-
-        return view;
     }
 
 }
