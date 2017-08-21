@@ -65,7 +65,13 @@ public class FullWeatherForecastActivity extends AppCompatActivity {
                                 .getWeather().get(0).getIcon()).reverse().toString() + "back",
                         "drawable",
                         getPackageName()))
-                .centerCrop().fitCenter().into(backgroundImage);
+                .centerCrop()
+                .fitCenter()
+                .error(getResources().getIdentifier(
+                        "d20back",
+                        "drawable",
+                        getPackageName()))
+                .into(backgroundImage);
 
         averageTemperatureTextView.setText(String.valueOf(
                 weatherInfo.getTemperature().getDayTemperature().intValue()
