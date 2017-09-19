@@ -24,8 +24,8 @@
             android:id="@+id/search_button"
             android:layout_width="27dp"
             android:layout_height="27dp"
-            android:layout_marginRight="22dp"
             android:layout_gravity="right"
+            android:layout_marginRight="22dp"
             android:src="@drawable/search_button" />
 
     </android.support.v7.widget.Toolbar>
